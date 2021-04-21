@@ -12,8 +12,9 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private  String firstName;
-    private  String lastName;
+    private String firstName;
+    private String lastName;
+    private String middleName;
 
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
@@ -21,9 +22,18 @@ public class Author {
     public Author() {
     }
 
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.middleName = middleName;
     }
 
     public String getFirstName() {
@@ -63,7 +73,8 @@ public class Author {
         return "Author{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='' " + lastName + '\'' +
                 '}';
     }
 
